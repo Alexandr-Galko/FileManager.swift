@@ -16,6 +16,11 @@
     "//": "console: Vapor's default logger sends logs directly to the chosen console.",
     "log": "console",
 
+    "//": "The type of view renderer that drop.view will use",
+    "//": "leaf: Pure Swift templating language created for Vapor.",
+    "//": "static: Simply return the view at the supplied path",
+    "view": "leaf",
+
     "//": "The type of hasher to use for hashing messages.",
     "//": "crypto: Vapor's default hasher powered by OpenSSL (configure in crypto.json)",
     "//": "bcrypt: Performant BCrypt hashing implementation (configure in bcrypt.json)",

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>File manager</title>
+  </head>
+  <body>
+  	<h1>File manager</h1>
+  	path = ./
+  	<div class="container">
+  		<table class="table table-striped">
+  		#loop(files, "file") {
+  		  <tr>
+            <td class="col-xs-12">
+              #(file)
+            </td>
+          </tr>
+		}
+  		</table>
+  	</div>
+  </body>
+</html>
