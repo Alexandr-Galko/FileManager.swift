@@ -8,28 +8,39 @@ extension Droplet
     {
         get("name")
         { 
-        	req in
+        	request in
       		return "Alex"
     	}
-    	get("files") 
-    	{ req in
+    	get("storage","*") 
+    	{ request in
     		let fm = FileManager()
     		do 
     		{
-				var files = try fm.contentsOfDirectory(atPath:"./")
+                let path = request.uri.path
+				var files = try fm.contentsOfDirectory(atPath:"./" + path)
 				files.sort()
 				// try files.copyItem(atPath:toPath:)
-      		    return try self.view.make("files", ["files": files])
+      		    return try self.view.make("files", ["files": files, "path": path])
 			}
 			catch
 			{
-			  print("error files")
-      		  return "error files"
-			}
-		}
-    	
+              print("error files")
+              throw Abort(.badRequest, reason: "Sorry 😱")
+            }
+        }
+        
+        get("error") 
+        { request in
+             throw Abort(.badRequest, reason: "Sorry 😱")
+        }
+        get("test","*") 
+        { request in
+            let path = request.uri.path
+             return "path:" + path
+        }
+
     	get("view") 
-    	{ req in
+    	{ request in
       		return try self.view.make("view")
     	}    	
     }
